@@ -1,0 +1,68 @@
+/* =============================================================================
+   Triton Dondra — custom styles (Tailwind handles utilities via CDN)
+   ============================================================================= */
+
+/* Smooth scrolling for in-page anchors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Scroll-driven reveal animations (IntersectionObserver adds .is-visible) */
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal {
+  transform: translateY(28px);
+}
+.reveal-left {
+  transform: translateX(-24px);
+}
+.reveal-right {
+  transform: translateX(24px);
+}
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Hero background overlay gradient */
+.hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(27, 67, 50, 0.88) 0%,
+    rgba(45, 106, 79, 0.55) 45%,
+    rgba(27, 67, 50, 0.75) 100%
+  );
+}
+
+/* Glassmorphism for header + floating quick bar */
+.glass-bar {
+  background: rgba(254, 254, 254, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Testimonial slider track */
+.slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
